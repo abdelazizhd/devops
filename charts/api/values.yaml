@@ -1,0 +1,30 @@
+# Global
+  namespace: "default"
+  domain: "test.api.local"
+
+# Image details
+image:
+  repository: "myacregistry.azurecr.io/myimage"
+  tag: latest
+
+# Deployment configuration
+replicaCount: 2
+resources:
+  requests:
+    memory: "1Gi"
+    cpu: "1"
+  limits:
+    memory: "2Gi"
+    cpu: "2"
+
+# Service configuration
+serviceType: NodePort
+port: 80
+
+# Env
+env:
+  DATABASE_HOST: ""
+  DATABASE_NAME: ""
+  DATABASE_USER: ""
+  DATABASE_PASSWORD: ""
+

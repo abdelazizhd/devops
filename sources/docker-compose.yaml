@@ -1,0 +1,30 @@
+version: '3.8' # Specify a suitable Docker Compose file version
+
+services:
+  db:
+    image: mysql:5.7 # Use your preferred MySQL image and tag
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: mysecretpassword
+      MYSQL_DATABASE: mydatabase
+    volumes:
+      - db_data:/var/lib/mysql # For data persistence
+      - ./db/init.sql:/docker-entrypoint-initdb.d/init.sql # Mount init script
+    ports:
+      - 3306:3306
+
+  app:
+    build: ./app  # Build from the current directory (replace if your app is elsewhere)
+    restart: always
+    depends_on:
+      - db
+    ports:
+      - 8080:8080 # Or your preferred port for the Node.js app
+    environment:
+      DATABASE_HOST: db
+      DATABASE_NAME: mydatabase
+      DATABASE_USER: root
+      DATABASE_PASSWORD: mysecretpassword
+
+volumes:
+  db_data: # Named volume for MySQL data
