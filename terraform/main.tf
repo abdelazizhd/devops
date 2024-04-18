@@ -47,6 +47,6 @@ module "api" {
   database_user = var.mysql_username
   database_password = module.database.password
   namespace = var.aks_namespace
-  domain
+  domain = var.domain
 }
 

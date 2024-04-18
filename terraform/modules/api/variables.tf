@@ -34,3 +34,8 @@ variable "namespace" {
   default = "tech-interview"
   description = "Namespace."
 }
+
+variable "domain" {
+  type        = string
+  description = "Domain name."
+}

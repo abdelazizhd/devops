@@ -38,3 +38,9 @@ variable "image_repository" {
   description = "Image repository."
 }
 
+variable "domain" {
+  type        = string
+  default     = "tech-interview.local"
+  description = "Domain name."
+}
+

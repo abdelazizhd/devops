@@ -9,6 +9,11 @@ resource "helm_release" "api" {
   }
 
   set {
+    name  = "domain"
+    value = var.domain
+  }
+
+  set {
     name  = "image.repository"
     value = var.image_repository
   }
